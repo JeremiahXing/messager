@@ -1,7 +1,12 @@
-export default function Home() {
+import React from 'react';
+import ChatInput from './components/ChatInput';
+import MessageList from './components/MessageList';
+
+export default function HomePage() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <main>
+      <MessageList/>
+      <ChatInput/>
+    </main>
   )
 }

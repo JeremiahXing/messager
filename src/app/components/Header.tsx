@@ -8,7 +8,7 @@ export default function Header() {
   const session = true;
   if (session) {
     return (
-      <header className='sticky top-0 z-50 bg-white flex justify-between items-center p-10 shadow-sm'>
+      <div className='sticky top-0 z-50 bg-white flex justify-between items-center p-10 shadow-sm'>
         <div className='flex space-x-2 items-center'>
           <Image 
             src="https://1000logos.net/wp-content/uploads/2021/10/logo-Meta.png" 
@@ -17,16 +17,16 @@ export default function Header() {
             width={50}
           />
           <div>
-            <p className='text-blue-400'> Logged in as:</p>
-            <p className='font-bold text-lg text-black'> User Name</p>
+            <div className='text-blue-400'> Logged in as:</div>
+            <div className='font-bold text-lg text-black'> User Name</div>
           </div>
         </div>
         <LogoutButton/>
-      </header>
+      </div>
     )
   }
   return (
-    <header className='sticky top-0 z-50 bg-white flex justify-center items-center p-10 shadow-sm'>
+    <div className='sticky top-0 z-50 bg-white flex justify-center items-center p-10 shadow-sm'>
       <div className='flex flex-col items-center space-y-5'>
         <div className='flex space-x-2 items-center'>
           <Image 
@@ -35,7 +35,7 @@ export default function Header() {
             height={10}
             width={50}
           />
-          <p className='text-blue-400'> Weclome to Meta Messenager</p>  
+          <div className='text-blue-400'> Weclome to Meta Messenager</div>  
         </div>
 
         <Link 
@@ -44,7 +44,7 @@ export default function Header() {
             Sign In
         </Link>
       </div>
-    </header>
+    </div>
   )
 }
 

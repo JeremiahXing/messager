@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import redis from '../../../redis';
 import { Message } from 'typings';
+import { serverPusher } from '../../../pusher';
 
 type Data = {
   message: Message
@@ -18,12 +19,14 @@ export default async function handler(
     res.status(405).json({ name: 'Method Not Allowed' })
     return;
   }
-  const { newMessage } = req.body;
+  const { msg } = req.body;
   const serverDateMsg = {
-    ...newMessage,
+    ...msg,
     created_at: Date.now()
   }
 
-  await redis.hset('messages', newMessage.id, JSON.stringify(serverDateMsg));
+  await redis.hset('messages', msg.id, JSON.stringify(serverDateMsg));
+  serverPusher.trigger('messages', 'new-message', serverDateMsg);
+
   res.status(200).json({ message: serverDateMsg})
 }

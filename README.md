@@ -5,5 +5,5 @@ Upstash Redis
 Tailwind
 NextAuth
 
-*asyc request too slow -> immediate client SWR hook (fetching cacheing data)
+*asyc request too slow -> immediate client SWR hook (fetching cacheing data) cache message
 

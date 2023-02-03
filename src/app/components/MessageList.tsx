@@ -16,7 +16,7 @@ export default function MessageList({initialMessages}: Props) {
     data: messages, 
     error, 
     mutate
-  } = useSWR("/api/getMessages", fetcher);
+  } = useSWR("http://messager-qhtkmza02-jeremiahxing.vercel.app/api/getMessages", fetcher);
 
   useEffect(() => {
     const channel = clientPusher.subscribe("messages");

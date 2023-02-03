@@ -36,12 +36,11 @@ export default async function handler(
     content: aiRes.text,
     created_at: Date.now(),
     username: "ai",
-    avatar: "https://i.pravatar.cc/150?img=2",
+    avatar: "https://gravatar.com/avatar/1f453dff9349d4f73627b957a92db99f?s=400&d=identicon&r=x",
     email: "fake@ai.com",
   };
 
-  
 
-  res.status(200).json({ message: aiMessage})
+  res.status(200).json({ message: aiMessage});
 }
 

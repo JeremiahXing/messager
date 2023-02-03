@@ -27,7 +27,7 @@ export default function ChatInput() {
       content: messageToSend,
       created_at: Date.now(),
       username: "user",
-      avatar: "https://gravatar.com/avatar/1f453dff9349d4f73627b957a92db99f?s=400&d=identicon&r=x",
+      avatar: "https://i.pravatar.cc/150?img=1",
       email: "jez.hsing.dev@gmail.com"
     };
 
@@ -53,24 +53,27 @@ export default function ChatInput() {
       rollbackOnError: true,
     });
 
-    // const aiRes = await fetch("/api/chatGPT", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify({
-    //     newMessage,
-    //   }), 
-    // }).then(res => res.json());
+    const aiRes = await fetch("/api/chatGPT", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        newMessage,
+      }), 
+    }).then(res => res.json());
 
-    // const aiMessage: Message = aiRes.message;
+    console.log("aiRes", aiRes);
 
-    // await mutate(uploadMessage(aiMessage), {
-    //   // optimisticData is the data that presumed to be used to render the UI (no need to fetch if it hits).
-    //   optimisticData: [aiMessage, ...messages!],
-    //   // if it miss we rollback to the right data.
-    //   rollbackOnError: true,
-    // });
+    
+    const aiMessage: Message = aiRes.message;
+
+    await mutate(uploadMessage(aiMessage), {
+      // optimisticData is the data that presumed to be used to render the UI (no need to fetch if it hits).
+      optimisticData: [aiMessage, ...messages!],
+      // if it miss we rollback to the right data.
+      rollbackOnError: true,
+    });
   };
 
   return (

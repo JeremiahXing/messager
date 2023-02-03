@@ -7,7 +7,7 @@ type Props = {
 };
 
 export default function MessageComponent(props: Props) {
-  const isUser = true;
+  const isUser = (props.message.username === "user");
   return (
     <div className={`flex w-fit ${isUser && "ml-auto"}`}>
       <div className={`flex-shrink-0 ${isUser && "order-2"}`}>

@@ -7,7 +7,8 @@ async function HomePage() {
   
   //server side rendering
   const data = await fetch(`${"https://"+process.env.NEXT_PUBLIC_VERCEL_URL || 'https://localhost:3000'}/api/getMessages`)
-    .then(res => res.json());
+    .then(res => res.json())
+    .catch(err => console.log(err));
   
   const messages: Message[] = data.messages;
 

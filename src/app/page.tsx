@@ -6,7 +6,7 @@ import MessageList from './components/MessageList';
 async function HomePage() {
   
   //server side rendering
-  const data = await fetch(`${"https://"+process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000'}/api/getMessages`)
+  const data = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000'}/api/getMessages`)
     .then(res => res.json());
   
   const messages: Message[] = data.messages;
